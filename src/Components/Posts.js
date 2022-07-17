@@ -4,14 +4,6 @@ import React from "react";
 const ionIconAcoes = ['chatbubble-outline','paper-plane-outline']
 
 const postArr = [{user: 'meowed',postImg: 'assets/img/gato-telefone.svg',likedBy: 'respondeai',LikesNum: '101.523', icon: 'heart-outline' },{user: 'barked',postImg: 'assets/img/dog.svg',likedBy: 'adorable_animals',LikesNum: '99.159', icon: 'heart-outline'}]
-
-function LikeButton(props){
-  const [iconHeart,SetIconHeart] = React.useState(props.name)
-  console.log(iconHeart)
-  return (                
-    <ion-icon name = {iconHeart} onClick={()=> {SetIconHeart('heart')}}></ion-icon>
-    )
-  }
   
   export default function(){
     const path = 'assets/img/'
@@ -31,7 +23,7 @@ function LikeButton(props){
             </div>
     
             <div class="conteudo">
-              <img src={objPost.postImg} onClick={()=> {
+              <img src={objPost.postImg} onDoubleClick={()=> {
                   if(iconHeart === objPost.icon){
                     SetIconHeart('heart')  
                   }}}/>
@@ -55,7 +47,7 @@ function LikeButton(props){
               <div class="curtidas">
                 <img src="assets/img/respondeai.svg" />
                 <div class="texto">
-                  Curtido por <strong>{objPost.likedBy}</strong> e <strong>outras {objPost.LikesNum+1} pessoas</strong>
+                  Curtido por <strong>{objPost.likedBy}</strong> e <strong>outras {objPost.LikesNum} pessoas</strong>
                 </div>
               </div>
             </div>
