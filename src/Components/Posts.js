@@ -1,14 +1,25 @@
 import IonIconTemplade from './Ion-icons'
+import React from "react";
 
-const postArr = [{user: 'meowed',postImg: 'assets/img/gato-telefone.svg',likedBy: 'respondeai',LikesNum: '101.523'},{user: 'barked',postImg: 'assets/img/dog.svg',likedBy: 'adorable_animals',LikesNum: '99.159'}]
+const ionIconAcoes = ['chatbubble-outline','paper-plane-outline']
 
-const ionIconAcoes = ['heart-outline','chatbubble-outline','paper-plane-outline']
+const postArr = [{user: 'meowed',postImg: 'assets/img/gato-telefone.svg',likedBy: 'respondeai',LikesNum: '101.523', icon: 'heart-outline' },{user: 'barked',postImg: 'assets/img/dog.svg',likedBy: 'adorable_animals',LikesNum: '99.159', icon: 'heart-outline'}]
 
-export default function(){
+function LikeButton(props){
+  const [iconHeart,SetIconHeart] = React.useState(props.name)
+  console.log(iconHeart)
+  return (                
+    <ion-icon name = {iconHeart} onClick={()=> {SetIconHeart('heart')}}></ion-icon>
+    )
+  }
+  
+  export default function(){
     const path = 'assets/img/'
     const fileType = '.svg'
     return( postArr.map(objPost => 
-        <div class="post">
+        { const [iconHeart,SetIconHeart] = React.useState(objPost
+          .icon)
+          return(<div class="post">
             <div class="topo">
               <div class="usuario">
                 <img src={path+objPost.user+fileType}/>
@@ -20,13 +31,21 @@ export default function(){
             </div>
     
             <div class="conteudo">
-              <img src={objPost.postImg} />
+              <img src={objPost.postImg} onClick={()=> {
+                  if(iconHeart === objPost.icon){
+                    SetIconHeart('heart')  
+                  }}}/>
             </div>
     
             <div class="fundo">
               <div class="acoes">
                 <div>
-                  {ionIconAcoes.map(item => <IonIconTemplade name={item}/>)}
+                <ion-icon name = {iconHeart} onClick={()=> {
+                  if(iconHeart === objPost.icon){
+                    SetIconHeart('heart')  
+                  } else{SetIconHeart('heart-outline')}
+                  }}></ion-icon>
+                {ionIconAcoes.map(item => <IonIconTemplade name={item}/>)}
                 </div>
                 <div>
                   <IonIconTemplade name="bookmark-outline"/>
@@ -36,9 +55,9 @@ export default function(){
               <div class="curtidas">
                 <img src="assets/img/respondeai.svg" />
                 <div class="texto">
-                  Curtido por <strong>{objPost.likedBy}</strong> e <strong>outras {objPost.LikesNum} pessoas</strong>
+                  Curtido por <strong>{objPost.likedBy}</strong> e <strong>outras {objPost.LikesNum+1} pessoas</strong>
                 </div>
               </div>
             </div>
-        </div>))
+        </div>)}))
 }

@@ -184,6 +184,10 @@ body {
   width: 100%;
 }
 
+.post .conteudo img:hover{
+  cursor: pointer;
+}
+
 .post .fundo .acoes {
   display: flex;
   justify-content: space-between;
@@ -308,6 +312,19 @@ body {
 
 .logo-mobile, .instagram-mobile {
   display: none !important;
+}
+
+.post .fundo .acoes ion-icon[name=heart]{
+  color: red;
+}
+
+.post .fundo .acoes ion-icon[name=heart-outline]:active {
+  transform: translateY(1.5px);
+  
+}
+
+.post .fundo .acoes ion-icon[name=heart]:active {
+  transform: translateY(1.5px);
 }
 
 @media (max-width: 935px) {
